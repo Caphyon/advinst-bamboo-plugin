@@ -106,11 +106,18 @@ public class AdvinstBuildTask implements TaskType
 
       ExternalProcess process = mProcessService.createExternalProcess(taskContext, processBuilder);
       process.execute();
-
-      if (process.getHandler() != null && !process.getHandler().succeeded())
+      ProcessHandler handler = process.getHandler();
+      if (handler instanceof PluggableProcessHandler)
       {
-        String externalProcessOutput = getErrorMessage(process);
-        buildLogger.addBuildLogEntry(externalProcessOutput);
+        OutputHandler outputHandler = ((PluggableProcessHandler) handler).getOutputHandler();
+        if (outputHandler instanceof StringOutputHandler)
+        {
+          StringOutputHandler outputStringHandler = (StringOutputHandler) outputHandler;
+          if (outputStringHandler.getOutput() != null)
+          {
+            buildLogger.addBuildLogEntry(outputStringHandler.getOutput());
+          }
+        }
       }
 
       return TaskResultBuilder.newBuilder(taskContext).checkReturnCode(process, 0).build();
@@ -257,40 +264,5 @@ public class AdvinstBuildTask implements TaskType
     }
 
     return aicFile;
-  }
-
-  public String getErrorMessage(ExternalProcess process)
-  {
-    ProcessHandler handler = process.getHandler();
-    String commandLine = process.getCommandLine();
-    StringBuilder message = new StringBuilder();
-
-    if (handler.getException() != null)
-    {
-      message.append("Exception executing command \"")
-        .append(commandLine).append(" \n")
-        .append(handler.getException().getMessage()).append("\n")
-        .append(handler.getException()).append("\n");
-    }
-
-    String reason = null;
-    if (handler instanceof PluggableProcessHandler)
-    {
-      OutputHandler errorHandler = ((PluggableProcessHandler) handler).getErrorHandler();
-      if (errorHandler instanceof StringOutputHandler)
-      {
-        StringOutputHandler errorStringHandler = (StringOutputHandler) errorHandler;
-        if (errorStringHandler.getOutput() != null)
-        {
-          reason = errorStringHandler.getOutput();
-        }
-      }
-    }
-    if (reason != null && reason.trim().length() > 0)
-    {
-      message.append("Error executing command \"").append(commandLine).append("\": ").append(reason);
-    }
-
-    return message.toString();
   }
 }
