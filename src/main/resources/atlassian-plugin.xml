@@ -1,0 +1,23 @@
+<atlassian-plugin key="${project.groupId}.${project.artifactId}"
+                  name="${project.name}" plugins-version="2">
+  <plugin-info>
+    <description>${project.description}</description>
+    <version>${project.version}</version>
+    <vendor name="${project.organization.name}"
+            url="${project.organization.url}"/>
+    <param name="plugin-icon">images/pluginIcon.png</param>
+    <param name="plugin-logo">images/pluginLogo.png</param>
+  </plugin-info>
+
+  <!-- add our i18n resource -->
+  <resource type="i18n" name="advinst task language" location="english"/>
+
+  <taskType key="advinstBuildTask" name="Advanced Installer"
+            class="caphyon.advinst.bamboo.AdvinstBuildTask">
+    <description>A task tha builds Advanced Installer projects</description>
+    <configuration class="caphyon.advinst.bamboo.AdvinstBuildTaskConfigurator"/>
+    <resource type="freemarker" name="edit" location="editAdvinstBuildTask.ftl"/>
+    <resource type="freemarker" name="view" location="viewAdvinstBuildTask.ftl"/>
+  </taskType>
+
+</atlassian-plugin>
