@@ -1,4 +1,4 @@
-Advanced Installer plugin for Boamboo
+Advanced Installer plugin for Bamboo
 =========
 
 Requirements
