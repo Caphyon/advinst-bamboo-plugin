@@ -42,8 +42,8 @@ public class AdvinstBuildTask implements TaskType
     this.mTestCollationService = testCollationService;
   }
 
-  @Override
-  public TaskResult execute(final TaskContext taskContext) throws TaskException
+  @NotNull
+  public TaskResult execute(@NotNull final TaskContext taskContext) throws TaskException
   {
     final BuildLogger buildLogger = taskContext.getBuildLogger();
     AdvinstBuildContext buildContext = createBuildContext(taskContext);
@@ -69,7 +69,7 @@ public class AdvinstBuildTask implements TaskType
 
 
         String outputFileName = getOutputFile(buildContext);
-        if (StringUtils.isEmpty(outputFileName))
+        if (StringUtils.isNotEmpty(outputFileName))
         {
           commands.add(String.format("SetPackageName \"%s\" -buildname \"%s\"", outputFileName, aipBuild));
         }
