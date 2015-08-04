@@ -35,6 +35,17 @@
     </license>
   </licenses>
 
+  <scm>
+    <url>https://github.com/advinst/advinst-bamboo-plugin</url>
+    <connection>
+      scm:git:https://github.com/advinst/advinst-bamboo-plugin.git
+    </connection>
+    <developerConnection>
+      scm:git:https://github.com/advinst/advinst-bamboo-plugin.git
+    </developerConnection>
+    <tag>HEAD</tag>
+  </scm>
+
   <properties>
     <bamboo.version>5.9.2</bamboo.version>
     <bamboo.data.version>5.9.2</bamboo.data.version>

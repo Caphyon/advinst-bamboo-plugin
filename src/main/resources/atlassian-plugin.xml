@@ -5,8 +5,6 @@
     <version>${project.version}</version>
     <vendor name="${project.organization.name}"
             url="${project.organization.url}"/>
-    <param name="plugin-icon">images/pluginIcon.png</param>
-    <param name="plugin-logo">images/pluginLogo.png</param>
   </plugin-info>
 
   <!-- add our i18n resource -->
@@ -14,10 +12,11 @@
 
   <taskType key="advinstBuildTask" name="Advanced Installer"
             class="caphyon.advinst.bamboo.AdvinstBuildTask">
-    <description>A task tha builds Advanced Installer projects</description>
+    <description>Builds Advanced Installer projects</description>
     <configuration class="caphyon.advinst.bamboo.AdvinstBuildTaskConfigurator"/>
     <resource type="freemarker" name="edit" location="editAdvinstBuildTask.ftl"/>
     <resource type="freemarker" name="view" location="viewAdvinstBuildTask.ftl"/>
+    <resource type="download" name="icon" location="images/advinstIcon.png"/>
   </taskType>
 
 </atlassian-plugin>
