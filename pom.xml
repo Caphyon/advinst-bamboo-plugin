@@ -51,6 +51,10 @@
     <bamboo.data.version>5.9.2</bamboo.data.version>
     <amps.version>5.0.13</amps.version>
     <plugin.testrunner.version>1.2.3</plugin.testrunner.version>
+    <plugin.version>${project.version}</plugin.version>
+    <release.version>${project.version}</release.version>
+    <release.tag>v${project.version}</release.tag>
+    <release.notes>Please see the CHANGELOG.md file for list of changes.</release.notes>
   </properties>
 
   <dependencies>
@@ -108,6 +112,29 @@
           <target>1.6</target>
         </configuration>
       </plugin>
+
+      <plugin>
+        <groupId>de.jutzig</groupId>
+        <artifactId>github-release-plugin</artifactId>
+        <version>1.1.1</version>
+        <executions>
+          <execution>
+            <id>github-upload</id>
+            <phase>deploy</phase>
+            <goals>
+              <goal>release</goal>
+            </goals>
+            <inherited>false</inherited>
+            <configuration>
+              <releaseName>Release ${release.version}</releaseName>
+              <description>${release.notes}</description>
+              <tag>${release.tag}</tag>
+              <artifact>${project.build.directory}/${project.artifactId}-${release.version}.jar</artifact>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
     </plugins>
   </build>
 </project>
