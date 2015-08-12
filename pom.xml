@@ -7,7 +7,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>caphyon.advinst.bamboo</groupId>
   <artifactId>advinst-bamboo-plugin</artifactId>
-  <version>1.0</version>
+  <version>1.1-SNAPHOT</version>
 
   <organization>
     <name>Caphyon</name>
