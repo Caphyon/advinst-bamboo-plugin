@@ -46,6 +46,14 @@
     <tag>HEAD</tag>
   </scm>
 
+  <distributionManagement>
+    <repository>
+      <id>internal.repo</id>
+      <name>Temporary Staging Repository</name>
+      <url>file://${project.build.directory}/mvn-repo</url>
+    </repository>
+  </distributionManagement>
+
   <properties>
     <bamboo.version>5.9.2</bamboo.version>
     <bamboo.data.version>5.9.2</bamboo.data.version>
