@@ -147,7 +147,7 @@ public class AdvinstBuildTask implements TaskType
     File advinstComPath = new File(rootPathParam, AdvinstConstants.AdvinstComSubPath);
     if (!advinstComPath.exists())
     {
-      throw new AdvinstException("Advanced Installer root path is invalid");
+      throw new AdvinstException("Advanced Installer root path is invalid: " + rootPathParam);
     }
     return advinstComPath;
   }
@@ -163,17 +163,17 @@ public class AdvinstBuildTask implements TaskType
       throw new AdvinstException("Advanced Installer project file path was not specified");
     }
 
-    File advinstComPath = new File(aipPathParam);
-    if (!advinstComPath.isAbsolute())
+    File aipPath = new File(aipPathParam);
+    if (!aipPath.isAbsolute())
     {
-      advinstComPath = new File(taskContext.getRootDirectory(), aipPathParam);
+      aipPath = new File(taskContext.getRootDirectory(), aipPathParam);
     }
 
-    if (!advinstComPath.exists())
+    if (!aipPath.exists())
     {
-      throw new AdvinstException("Advanced Installer project file path is invalid");
+      throw new AdvinstException("Advanced Installer project file path is invalid: " + aipPath);
     }
-    return advinstComPath;
+    return aipPath;
   }
 
   private String getAipBuild(final AdvinstBuildContext buildContext)
