@@ -36,12 +36,12 @@
   </licenses>
 
   <scm>
-    <url>https://github.com/advinst/advinst-bamboo-plugin</url>
+    <url>https://github.com/Caphyon/advinst-bamboo-plugin</url>
     <connection>
-      scm:git:https://github.com/advinst/advinst-bamboo-plugin.git
+      scm:git:https://github.com/Caphyon/advinst-bamboo-plugin.git
     </connection>
     <developerConnection>
-      scm:git:https://github.com/advinst/advinst-bamboo-plugin.git
+      scm:git:https://github.com/Caphyon/advinst-bamboo-plugin.git
     </developerConnection>
     <tag>HEAD</tag>
   </scm>
